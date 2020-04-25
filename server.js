@@ -11,7 +11,7 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 // Route files
-const bootcamps = require('./api/routes/bootcamps');
+const bootcamps = require('./routes/bootcamps');
 
 const app = express();
 
