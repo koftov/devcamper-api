@@ -70,8 +70,8 @@ exports.addReview = asyncHandler(async (req, res, next) => {
 // @desc      Update review
 // @route     PUT /api/v1/reviews/:id
 // @access    Private
-exports.updatereview = asyncHandler(async (req, res, next) => {
-  let review = await review.findById(req.params.id);
+exports.updateReview = asyncHandler(async (req, res, next) => {
+  let review = await Review.findById(req.params.id);
 
   if (!review) {
     return next(
@@ -89,7 +89,7 @@ exports.updatereview = asyncHandler(async (req, res, next) => {
     );
   }
 
-  review = await review.findByIdAndUpdate(req.params.id, req.body, {
+  review = await Review.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
     runValidators: true,
   });
@@ -103,8 +103,8 @@ exports.updatereview = asyncHandler(async (req, res, next) => {
 // @desc      Delete review
 // @route     DELETE /api/v1/reviews/:id
 // @access    Private
-exports.deletereview = asyncHandler(async (req, res, next) => {
-  const review = await review.findById(req.params.id);
+exports.deleteReview = asyncHandler(async (req, res, next) => {
+  const review = await Review.findById(req.params.id);
 
   if (!review) {
     return next(
@@ -122,7 +122,7 @@ exports.deletereview = asyncHandler(async (req, res, next) => {
     );
   }
 
-  await review.remove();
+  await Review.remove();
 
   res.status(200).json({
     success: true,
